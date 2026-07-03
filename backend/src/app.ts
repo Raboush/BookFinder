@@ -4,6 +4,7 @@ import bookRoutes from "./routes/book.routes";
 import categoryRoutes from "./routes/category.routes";
 import userRoutes from "./routes/user.routes";
 import favoriteRoutes from "./routes/favorite.routes";
+import searchRoutes from "./routes/search.routes";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bookRoutes);
 app.use(categoryRoutes);
 app.use(userRoutes);
 app.use(favoriteRoutes);
+app.use(searchRoutes);
 
 // Port
 const PORT = 3000;
