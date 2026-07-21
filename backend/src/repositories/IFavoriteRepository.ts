@@ -6,4 +6,6 @@ export interface IFavoriteRepository {
 
     getById(id: number): Favorite | undefined;
 
+    getByUserId(userId: number): Favorite[];
+
 }

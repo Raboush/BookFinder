@@ -24,4 +24,8 @@ export class FavoriteRepository implements IFavoriteRepository {
         return this.favorites.find(favorite => favorite.id === id);
     }
 
+    getByUserId(userId: number): Favorite[] {
+    return this.favorites.filter(favorite => favorite.userId === userId);
+}
+
 }
