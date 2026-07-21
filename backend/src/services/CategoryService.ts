@@ -1,9 +1,10 @@
 import { Category } from "../models/Category";
 import { CategoryRepository } from "../repositories/CategoryRepository";
+import { RepositoryFactory } from "../factories/RepositoryFactory";
 
 export class CategoryService {
 
-    private repository = new CategoryRepository();
+    private repository: CategoryRepository = RepositoryFactory.createCategoryRepository();
 
     getAllCategories(): Category[] {
         return this.repository.getAll();
