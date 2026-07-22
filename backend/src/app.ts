@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import bookRoutes from "./routes/book.routes";
 import categoryRoutes from "./routes/category.routes";
@@ -8,7 +9,14 @@ import searchRoutes from "./routes/search.routes";
 
 const app = express();
 
-// Middleware
+// CORS
+app.use(cors());
+
+app.use((req, res, next) => {
+    console.log("Request:", req.method, req.url);
+    next();
+});
+
 app.use(express.json());
 
 // Routes
@@ -18,10 +26,8 @@ app.use(userRoutes);
 app.use(favoriteRoutes);
 app.use(searchRoutes);
 
-// Port
 const PORT = 3000;
 
-// Start server
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
