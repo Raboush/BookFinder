@@ -1,9 +1,10 @@
 import { Book } from "../models/Book";
 import { BookRepository } from "../repositories/BookRepository";
+import { RepositoryFactory } from "../factories/RepositoryFactory";
 
 export class BookService {
 
-    private repository = new BookRepository();
+    private repository: BookRepository = RepositoryFactory.createBookRepository();
 
     getAllBooks(): Book[] {
         return this.repository.getAll();
