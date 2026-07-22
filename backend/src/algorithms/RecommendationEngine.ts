@@ -3,10 +3,12 @@ import { Filter } from "./Filter";
 import { Sort } from "./Sort";
 import { Scorer } from "./Scorer";
 import { BarycenterStrategy } from "./BarycenterStrategy";
+import { Normalization } from "./Normalization";
 
 export class RecommendationEngine {
 
     private filter = new Filter();
+    private normalization = new Normalization();
     private scorer = new Scorer(new BarycenterStrategy());
     private sorter = new Sort();
 
@@ -14,7 +16,9 @@ export class RecommendationEngine {
 
         const filteredBooks = this.filter.filterByRating(books, 4);
 
-        const scores = this.scorer.scoreBooks(filteredBooks);
+        const normalizedBooks = this.normalization.normalize(filteredBooks);
+
+        const scores = this.scorer.scoreBooks(normalizedBooks);
 
         return this.sorter.sortBooks(scores);
 
